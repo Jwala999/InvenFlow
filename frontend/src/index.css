@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card-glass {
+    @apply bg-panel/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-card;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-glass:hover {
+    transform: translateY(-8px) rotateX(8deg) rotateY(8deg);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+  }
+
+  .btn-primary {
+    @apply bg-accent text-void font-display font-semibold px-5 py-2.5 rounded-xl
+           hover:bg-accent-dim transition-all duration-200 hover:shadow-glow-sm
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-accent/50;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.4),
+      transparent
+    );
+    transition: 0.6s;
+  }
+
+  .btn-primary:hover::before {
+    left: 250%;
+  }
+
+  .btn-ghost {
+    @apply border border-border/60 text-gray-300 font-body px-5 py-2.5 rounded-xl
+           hover:border-accent/40 hover:text-accent hover:bg-accent-glow transition-all duration-200
+           active:scale-95 focus:outline-none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-ghost:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .input-field {
+    @apply bg-surface border border-border/60 text-gray-100 rounded-xl px-4 py-2.5 w-full
+           placeholder:text-gray-600 focus:outline-none focus:border-accent/60 focus:ring-1
+           focus:ring-accent/30 transition-all duration-200 font-body text-sm;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  .input-field:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-400 font-body text-sm
+           hover:text-accent hover:bg-accent-glow transition-all duration-200 cursor-pointer;
+    position: relative;
+  }
+
+  .sidebar-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+  }
+
+  .sidebar-link:hover::before,
+  .sidebar-link.active::before {
+    height: 60%;
+  }
+
+  .sidebar-link.active {
+    @apply text-accent bg-accent-glow border border-accent/20;
+    transform: translateX(4px);
+  }
+
+  .stat-card {
+    @apply card-glass p-6 relative overflow-hidden cursor-pointer
+           hover:border-accent/30 transition-all duration-300 hover:shadow-glow-sm;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .stat-card:hover {
+    transform: scale(1.04) rotate(1deg);
+  }
+
+  /* 3D Flip Effect for Cards */
+  .card-3d {
+    perspective: 1000px;
+  }
+
+  .card-3d-inner {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+
+  .card-3d:hover .card-3d-inner {
+    transform: rotateY(12deg) rotateX(8deg);
+  }
+
+  /* Badge with floating animation */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .badge-green { @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/20; }
+  .badge-amber { @apply badge bg-amber-400/15 text-amber-400 border border-amber-400/20; }
+  .badge-rose  { @apply badge bg-rose-400/15 text-rose-400 border border-rose-400/20; }
+  .badge-sky   { @apply badge bg-sky-400/15 text-sky-400 border border-sky-400/20; }
+  .badge-gray  { @apply badge bg-gray-500/15 text-gray-200 border border-gray-500/20; }
+
+  /* Smooth hover lift with 3D feel */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-10px) scale(1.02) rotateX(5deg);
+    box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.3);
+  }
+
+  /* Button press effect */
+  .btn-press {
+    transition: transform 0.1s ease;
+  }
+
+  .btn-press:active {
+    transform: scale(0.92) translateY(2px);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px -5px rgb(59 130 246 / 0.5); }
+  50% { box-shadow: 0 0 25px 5px rgb(59 130 246 / 0.6); }
+}
+
+/* Extra utility for glowing elements */
+.glow-accent {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
