@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 export default function LoginPage() {
   const { user, login } = useAuth();
   const [email, setEmail]       = useState('admin@inventory.com');
-  const [password, setPassword] = useState('admin@12345');
+  const [password, setPassword] = useState('admin123');
   const [showPw, setShowPw]     = useState(false);
   const [loading, setLoading]   = useState(false);
   const [error, setError]       = useState('');
