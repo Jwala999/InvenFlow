@@ -84,7 +84,7 @@ export default function Layout() {
         background:'#0d1117', borderRight:'1px solid rgba(255,255,255,0.06)',
         display:'flex', flexDirection:'column', zIndex:30,
         transition:'transform 0.3s cubic-bezier(0.4,0,0.2,1)',
-        transform: sidebarOpen ? 'translateX(0)' : window.innerWidth < 1024 ? 'translateX(-100%)' : 'translateX(0)',
+        transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
       }}
       className="lg-sidebar">
 
@@ -179,15 +179,15 @@ export default function Layout() {
       </aside>
 
       {/* ══════════════ MAIN AREA ══════════════ */}
-      <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden', marginLeft: window.innerWidth >= 1024 ? 256 : 0, minWidth:0 }}>
+      <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden', marginLeft: 0, minWidth:0 }}>
 
         {/* ── Top Navbar ── */}
         <header style={{ borderBottom:'1px solid rgba(255,255,255,0.06)', background:'rgba(13,17,23,0.85)', backdropFilter:'blur(20px)', padding:'0 24px', flexShrink:0, zIndex:10 }}>
           <div style={{ display:'flex', alignItems:'center', height:64, gap:14 }}>
             {/* Mobile hamburger */}
             <button onClick={() => setSidebarOpen(true)}
-              style={{ background:'none', border:'none', color:'#9ca3af', cursor:'pointer', display:'flex', padding:6 }} className="lg-hide">
-              <Menu size={20}/>
+              style={{ background:'none', border:'none', color:'#9ca3af', cursor:'pointer', display:'flex', padding:8, borderRadius:8, alignItems:'center' }}>
+              <Menu size={22}/>
             </button>
 
             {/* Page title */}
