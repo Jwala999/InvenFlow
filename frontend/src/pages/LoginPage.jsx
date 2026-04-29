@@ -5,8 +5,8 @@ import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
   const { user, login } = useAuth();
-  const [email, setEmail]       = useState('admin@inventory.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail]       = useState('');
+  const [password, setPassword] = useState('');
   const [showPw, setShowPw]     = useState(false);
   const [loading, setLoading]   = useState(false);
   const [error, setError]       = useState('');
@@ -98,24 +98,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo creds */}
-          <div style={{ marginTop:24, paddingTop:20, borderTop:'1px solid rgba(255,255,255,0.07)' }}>
-            <p style={{ fontSize:11, color:'#6b7280', textAlign:'center', marginBottom:12, fontFamily:'monospace', textTransform:'uppercase', letterSpacing:'0.06em' }}>Demo Credentials</p>
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
-              {[
-                { role:'Admin', email:'admin@inventory.com', pw:'admin123', color:'#6EE7B7', bg:'rgba(110,231,183,0.05)', border:'rgba(110,231,183,0.15)' },
-                { role:'Staff', email:'staff@inventory.com', pw:'staff123', color:'#38bdf8', bg:'rgba(56,189,248,0.05)', border:'rgba(56,189,248,0.15)' },
-              ].map(({ role, email:e, pw, color, bg, border }) => (
-                <button key={role} type="button" onClick={()=>{ setEmail(e); setPassword(pw); }}
-                  style={{ textAlign:'left', padding:'10px 12px', borderRadius:12, background:bg, border:`1px solid ${border}`, cursor:'pointer', transition:'all 0.15s' }}
-                  onMouseEnter={ev=>ev.currentTarget.style.opacity='0.8'}
-                  onMouseLeave={ev=>ev.currentTarget.style.opacity='1'}>
-                  <p style={{ fontSize:11, fontWeight:700, color, fontFamily:'monospace', margin:0 }}>{role}</p>
-                  <p style={{ fontSize:10, color:'#6b7280', margin:'3px 0 0', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{e}</p>
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* Register + Shop links */}
           <div style={{ marginTop:20, paddingTop:18, borderTop:'1px solid rgba(255,255,255,0.07)', display:'flex', flexDirection:'column', gap:10 }}>
